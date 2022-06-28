@@ -1,0 +1,2 @@
+1. Pixel Position: 
+https://clay-atlas.com/us/blog/2021/05/20/pyqt5-en-click-picture-pixel-value-position/
