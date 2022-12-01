@@ -39,6 +39,11 @@ Follow the code below if you need to install the above libraries.
 
 Also, remember to clone this project to your local machine. You may need to preserve the whole folder (i.e. do not move anything except the example.pdf) for the script to work fine.
 
+After all that, you can try running the script. Just double click on the Cropper.py. If everything is fine, the following interface will show up:
+<img src="guide/guide1.jpg" alt="Logo" width="500" height="500">
+
+If you see this, you are good to go!
+
 <!-- USAGE EXAMPLES -->
 ## Usage
 
@@ -46,7 +51,7 @@ It is easy to use the script. Just follow the following steps:
 
 1) Put your file in the same directory as the script (Cropper.py)
 2) Run the script (Just double click it should do the job)
-2) Type the name of your pdf into the column(For example, example.pdf)
+2) Type the name of your pdf into the textfield(For example, example.pdf)
 3) Click Import
 4) Click on the section that you want to split the pdf.
 5) Click Crop after you have done splitting the pdf.
