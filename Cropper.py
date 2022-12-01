@@ -95,6 +95,7 @@ class Ui_MainWindow(object):
         self.Right.clicked.connect(self.right_clicked)
         self.Left.clicked.connect(self.left_clicked)
         self.Crop.clicked.connect(self.crop_clicked)
+        self.Reset.clicked.connect(self.reset_clicked)
         self.labelcount = 1
         Page.valid = False
         Page.cropped = 0
@@ -108,6 +109,15 @@ class Ui_MainWindow(object):
         self.Left.setText(_translate("MainWindow", "<"))
         self.Reset.setText(_translate("MainWindow", "Reset"))
 
+    def reset_clicked(self):
+        self.resetVertical()
+        self.newLabelVertical()
+        Page.valid = False
+        Page.doc = None
+        Page.cropped = 0
+        Page.currentPage = 0
+        self.labelcount = 1
+        
     def crop_clicked(self):
         if(not Page.valid):
             self.resetVertical()
