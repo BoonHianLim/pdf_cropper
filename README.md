@@ -37,7 +37,7 @@ Follow the code below if you need to install the above libraries.
   ```
   to check you indeed install all the libraries we need.
 
-Also, remember to clone this project to your local machine. You may need to preserve the whole folder (i.e. do not move anything except the example.pdf) for the script to work fine.
+Also, remember to clone this project to your local machine. You may need to preserve the whole folder (i.e. do not move anything) for the script to work fine.
 
 After all that, you can try running the script. Just double click on the Cropper.py. If everything is fine, the following interface will show up:
 
