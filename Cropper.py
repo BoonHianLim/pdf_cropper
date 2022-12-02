@@ -97,8 +97,7 @@ class Ui_MainWindow(object):
         self.Crop.clicked.connect(self.crop_clicked)
         self.Reset.clicked.connect(self.reset_clicked)
         self.labelcount = 1
-        Page.valid = False
-        Page.cropped = 0
+        Page.init()
         
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -112,11 +111,7 @@ class Ui_MainWindow(object):
     def reset_clicked(self):
         self.resetVertical()
         self.newLabelVertical()
-        Page.valid = False
-        Page.doc = None
-        Page.cropped = 0
-        Page.currentPage = 0
-        self.labelcount = 1
+        Page.init()
         
     def crop_clicked(self):
         if(not Page.valid):
@@ -191,8 +186,8 @@ class Ui_MainWindow(object):
         if(index< 0):
             index = 0
 
-        if(index > Page.maxPage()):
-            index = Page.maxPage()
+        if(index == Page.maxPage()):
+            index = Page.maxPage() - 1
 
         return index
     
@@ -212,7 +207,8 @@ class Ui_MainWindow(object):
         for page in Page.doc:  # iterate through the pages
             pix = page.get_pixmap(matrix=mat)  # render page to an image
             pix.save(toPath + "%i.png" % page.number)  # store image as a PNG
-        
+            Page.height.append(page.mediabox[3])
+            
             
     def import_clicked(self):
         try:
@@ -376,8 +372,7 @@ class Ui_MainWindow(object):
             if y%2!=0:
                 x=float(pages[page].mediaBox.getHeight())
                 if(page != 0):
-                    
-                    x += 792 - float(prvHeight)
+                    x += Page.height[Page.currentPage] - float(prvHeight)
                     merged_page.mergeScaledTranslatedPage(pages[page], 1,0, x)
                 else:
                     merged_page.mergeScaledTranslatedPage(pages[page], 1,0, x)
@@ -411,7 +406,15 @@ class Page(object):
     @classmethod
     def maxPage(self):
         return len(Page.doc)
-    
+
+    @classmethod
+    def init(self):
+        Page.valid = False
+        Page.doc = None
+        Page.cropped = 0
+        Page.currentPage = None
+        Page.height = []
+        
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
